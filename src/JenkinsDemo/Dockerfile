@@ -5,8 +5,8 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/core/sdk:2.2-stretch AS build
 WORKDIR /src
-COPY ["JenkinsDemo/JenkinsDemo.csproj", "JenkinsDemo/"]
-RUN dotnet restore "JenkinsDemo/JenkinsDemo.csproj"
+COPY ["src/JenkinsDemo/JenkinsDemo.csproj", "JenkinsDemo/"]
+RUN dotnet restore "src/JenkinsDemo/JenkinsDemo.csproj"
 COPY . .
 WORKDIR /src/JenkinsDemo
 RUN dotnet build "JenkinsDemo.csproj" -c Release -o /app/build
