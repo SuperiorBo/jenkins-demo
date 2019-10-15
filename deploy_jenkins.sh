@@ -10,10 +10,15 @@ docker rm `docker ps -a | grep -w $CONTAINER"_"$CONTAINER | awk '{print $1}'`
 docker rmi --force `docker images | grep -w $IMAGE | awk '{print $3}'`
 # 切换至项目路径
 cd src
+echo `ls -l`
+
 # 创建新镜像
 docker build -t $IMAGE -f $1\Dockerfile . && \
 # 构建完镜像切换至解决方案路径
 cd ..
+
+
+
 # 删除 docker-compose.jenkins.yml 文件，防止使用相同镜像
 rm -rf docker-compose.jenkins.yml && \
 
