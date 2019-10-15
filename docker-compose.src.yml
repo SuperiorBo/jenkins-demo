@@ -1,0 +1,10 @@
+version: '3.7'
+services:
+  jenkins_demo:
+    image: IMAGE_LATEST
+    deploy:
+      restart_policy:
+        condition: on-failure
+    ports:
+      - 8081:80
+      - 8443:443

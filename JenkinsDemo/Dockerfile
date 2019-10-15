@@ -8,7 +8,7 @@ WORKDIR /src
 COPY ["JenkinsDemo/JenkinsDemo.csproj", "JenkinsDemo/"]
 RUN dotnet restore "JenkinsDemo/JenkinsDemo.csproj"
 COPY . .
-WORKDIR "/src/JenkinsDemo"
+WORKDIR /src/JenkinsDemo
 RUN dotnet build "JenkinsDemo.csproj" -c Release -o /app/build
 
 FROM build AS publish

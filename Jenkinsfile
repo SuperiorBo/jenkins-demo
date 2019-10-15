@@ -4,6 +4,8 @@ pipeline{
         stage('Pull Git Demo'){
             steps{
                 git credentialsId: 'www', url: 'git@192.168.200.119:dotnetcore/jenkins-demo.git'
+                echo 'Deploying'
+                sh './deploy_jenkins.sh'
             }
         }
     }
