@@ -1,7 +1,7 @@
 #!/bin/bash
 echo "0"
 # 容器名称
-CONTAINER="jenkins_demo"
+CONTAINER="JenkinsDemo"
 # 镜像名称（以日期时间为镜像标签，防止重复）
 IMAGE=$CONTAINER":"$(date -d "today" +"%Y%m%d_%H%M%S")
 echo "1"
@@ -11,7 +11,7 @@ docker rm `docker ps -a | grep -w $CONTAINER"_"$CONTAINER | awk '{print $1}'`
 docker rmi --force `docker images | grep -w $IMAGE | awk '{print $3}'`
 echo "2"
 # 创建新镜像
-docker build -t $IMAGE . && \
+docker build -t $IMAGE $CONTAINER/. && \
 echo "3"
 # 删除 docker-compose.jenkins.yml 文件，防止使用相同镜像
 rm -rf docker-compose.jenkins.yml && \
