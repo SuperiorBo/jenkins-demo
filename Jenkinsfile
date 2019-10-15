@@ -5,8 +5,11 @@ pipeline{
             steps{
                 git credentialsId: 'www', url: 'git@192.168.200.119:dotnetcore/jenkins-demo.git'
                 echo 'Deploying'
-                sh 'sh ./deploy_jenkins.sh'
+                sh 'sh ./deploy_jenkins.sh ${SERVICE_NAME}'
             }
         }
+    }
+    environment{
+        SERVICE_NAME = 'JenkinsDemo'
     }
 }
